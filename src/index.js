@@ -1,10 +1,18 @@
-import "./styles.css";
+document.getElementsByTagName("html").style = "overflow:scroll; margin: 20px";
+const links = document.querySelectorAll("a");
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+links.addEventListener("click", function (e) {
+  const id = this.href.split("(")[1].split(",")[0];
+  console.log("click", id);
+  var img = document.createElement("img");
+  img.src = `https://snap.mfcimg.com/snapimg/955/640x480/mfc_1${id}?no-cache=`;
+  var div = (document.createElement(
+    "div"
+  ).innerHTML = `<div id="${id}"><span onClick="document.getElementById(${id}).remove()">x</span><img src="${img.src}" alt='as' /></div>`);
+
+  document.body.appendChild(div);
+});
+window.document.getElementsByTagName("html")[0].style =
+  "overflow:scroll; height:101vh";
+window.document.getElementsByTagName("body")[0].style =
+  "overflow:scroll; height:101vh";
